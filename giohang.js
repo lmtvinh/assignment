@@ -18,11 +18,9 @@ function LayDanhSachItemGioHang() {
     // Buoc 1: Lay chuoi json luu tru trong Local Storage
     var jsonDanhSachGioHang = localStorage.getItem(keyLocalStorageItemGioHang);
     // Buoc 2: Chuyen tu json qua danh sach item gio hang
-    danhSachItemGioHang = JSON.parse(jsonDanhSachGioHang);
-    if(jsonDanhSachGioHang == null || jsonDanhSachGioHang == ``) {
+    if (jsonDanhSachGioHang != null) {
         danhSachItemGioHang = JSON.parse(jsonDanhSachGioHang);
     }
-    danhSachItemGioHang = JSON.parse(jsonDanhSachGioHang);
     return danhSachItemGioHang;
 }
 
@@ -33,5 +31,5 @@ function luuDanhSachItemGioHangVaoLocalStorage(danhSachItemGioHang) {
     var jsonDanhSachItemGioHang = JSON.stringify(danhSachItemGioHang);
 
     // Buoc 2: luu vao Local Storage
-    localStorage.setItem(keyLocalStorageItemGioHang, jsonDanhSachGioHang);
+    localStorage.setItem(keyLocalStorageItemGioHang, jsonDanhSachItemGioHang);
 }

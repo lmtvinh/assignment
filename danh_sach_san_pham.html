@@ -184,14 +184,13 @@
         // Buoc 3: Lay danh sach gio hang co trong local storage len
         var danhSachItemGioHang = LayDanhSachItemGioHang();
 
-
         // Buoc 4: Them item vao danh sach gio hang
         var coTonTaiTrongDanhSachItemGioHang = false;
         for (var i = 0; i < danhSachItemGioHang.length; i++) {
           var itemGioHangHienTai = danhSachItemGioHang[i];
 
           // Neu ton tai thi tang so luong len
-          if(itemGioHangHienTai.idSanPham === idSanPham) {
+          if(itemGioHangHienTai.idSanPham == idSanPham) {
             danhSachItemGioHang[i].soLuong++;
             coTonTaiTrongDanhSachItemGioHang = true;
           }
