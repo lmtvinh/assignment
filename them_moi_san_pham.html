@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xây dựng chức năng thêm mới sản phẩm</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      .them_moi_san_pham {
+        margin-top: 50px !important;
+        box-shadow: 2px 2px 10px #444;
+        width: 30%;
+        border: 1px solid green;
+        margin: auto;
+        padding: 30px;
+      }
+      .them_moi_san_pham label,
+      input {
+        width: 100%;
+        display: block;
+      }
+      .them_moi_san_pham label {
+        margin-top: 20px;
+      }
+      .them_moi_san_pham input {
+        margin-top: 5px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+      }
+      .them_moi_san_pham button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f7442e;
+        color: #fff;
+      }
+      .them_moi_san_pham button:hover {
+        background-color: #c53624;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="them_moi_san_pham">
+      <label for="hinhAnh">Hinh anh San Pham</label>
+      <input type="text" id="hinhAnh" />
+
+      <label for="ten">Ten San Pham</label>
+      <input type="text" id="ten" />
+
+      <label for="giaGoc">Gia Goc</label>
+      <input type="number" id="giaGoc" />
+
+      <label for="phanTramGiamGIa">Giam gia(%) tu 0 -> 1</label>
+      <input type="number" id="phanTramGiamGia" />
+
+      <label for="khuVuc">Khu Vuc</label>
+      <input type="text" id="khuVuc" />
+
+      <button onclick="onClickTaoSanPham()">Tao san Pham</button>
+    </div>
+    <script>
+      // Buoc 1: Lay danh sach san pham da co trong local storage
+      let danhSachSanPham = JSON.parse(localStorage.getItem(`danhSachSanPham`));
+      if (danhSachSanPham === null) {
+        danhSachSanPham = new Array();
+      }
+      console.log(danhSachSanPham);
+
+      let danhSachSanPham1 = new Array();
+      // Nhiem vu
+      // 1. Lang nghe su kien onclick, khi nguoi dung click vao button tao san pham
+      // 2. Lay toan bo du lieu nguoi dung dang nhap vao
+      // 3. Tao ra doi tuong tu cac du lieu nguoi dung nhap vao
+
+      function onClickTaoSanPham() {
+        // 1. Truy cap cac node de lay duoc du lieu
+        let nodeHinhAnh = document.getElementById("hinhAnh");
+        let hinhAnh = nodeHinhAnh.value;
+        nodeHinhAnh.value = ``;
+
+        let nodeTen = document.getElementById("ten");
+        let ten = nodeTen.value;
+        nodeTen.value = ``;
+
+        let nodeGiaGoc = document.getElementById("giaGoc");
+        let giaGoc = parseInt(nodeGiaGoc.value);
+        nodeGiaGoc = "";
+
+        let nodePhanTramGiamGia = document.getElementById("phanTramGiamGia");
+        let phanTramGiamGIa = Number(nodePhanTramGiamGia.value);
+
+        let nodeKhuVuc = document.getElementById("khuVuc");
+        let khuVuc = nodeKhuVuc.value;
+        nodeKhuVuc = "";
+
+
+        // 2. Tao ra doi tuong tu cac du lieu nguoi dung nhap vao
+        let sanPham = TaoDoiTuongSanPhan(
+          hinhAnh,
+          ten,
+          giaGoc,
+          Number(nodePhanTramGiamGia.value),
+          khuVuc,
+          null,
+        );
+        console.log(sanPham);
+        // 3. Dua san pham vao danh sach
+        danhSachSanPham1.push(sanPham);
+        console.log(`Danh sach cac san pham la: `);
+        console.log(danhSachSanPham1);
+        // Luu tru danh sach san pham xuong local Storage
+        let jsonDanhSachSanPham1 = JSON.stringify(danhSachSanPham1);
+        localStorage.setItem(`danhSachSanPham`, jsonDanhSachSanPham1);
+      }
+    </script>
+    <script src="san_pham.js"></script>
+    <script src="hotro.js"></script>
+  </body>
+</html>

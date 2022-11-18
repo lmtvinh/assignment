@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dua Vao ID cua doi tuong lay len noi dung cua toan bo doi tuong</title>
+</head>
+<body>
+    <!-- cho nguoi dung nhap vao ID cua san pham khi bam nut tim kiem se hien thi ra doi tuong -->
+    <input type="text" id="idSanPham" placeholder="Nhap ID san pham">
+    <button id="btn" onclick="onCLickTimKiemSanPham()">Tim Kiem</button>
+    <div id="ketQuaTimKiem">
+        <!-- Hien thi san pham ra day -->
+    </div>
+    
+    <script src="san_pham.js"></script>
+    <script src="hotro.js"></script>
+    <script>
+        function onCLickTimKiemSanPham() {
+            // Buoc 1: Truy xuat Node idSanPham de lay ra idSanPham
+            var nodeIdSanPham = document.getElementById('idSanPham');
+            var idSanPham = nodeIdSanPham.value;
+            console.log('id san pham nhap vao la: ' + idSanPham);
+            // BUoc 2 Truy xuat doi tuong theo ID
+            var sanPham = truyXuatSanPhamTheoID(idSanPham);
+            console.log(sanPham);
+            // Buoc 3: Chuyen doi tuong sang HTML
+            var HTML = chuyenDoiTuongSanPhamThanhHTML(sanPham);
+            // Buoc 4: Hien thi HTML ra Node ketQuaTimKiem
+            var nodeKetQuaTimKiem = document.getElementById(`ketQuaTimKiem`);
+            nodeKetQuaTimKiem.innerHTML = HTML;
+        }
+    </script>
+</body>
+</html>
