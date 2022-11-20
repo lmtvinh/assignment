@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hien Thi Gio Hang</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        img {
+            width: 100px;
+        }
+        input {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .gio_hang {
+            border: 1px solid #ddd;
+            box-shadow: 2px 2px 4px #ddd;
+            padding: 20px;
+            margin: auto;
+            max-width: 1100px;
+        }
+        .item_gio_hang {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .item_gio_hang .hinhAnh img{
+            width: 60px;
+            height: 80px;
+        }
+
+        .item_gio_hang .hinhAnh, .soLuong, .tongTien, .hanhDong {
+            flex: 1;
+            margin-left: 20px;
+        }
+
+        .item_gio_hang .gia {
+            flex: 2;
+        }
+
+        .item_gio_hang .ten {
+            flex: 3;
+        }
+        
+        .item_gio_hang .gia .giaGoc {
+            font-size: 12px;
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .item_gio_hang .gia .giaBan {
+            color: #F7452E;
+        }
+
+        .item_gio_hang .hanhDong i:hover{
+            color: #F7452E;
+        }
+    </style>
+</head>
+
+<div class="gio_hang" id="gio_hang">
+    <!-- Danh sach item gio hang -->
+    <!-- <div class="item_gio_hang">
+        <div class="hinhAnh">
+            <img src="https://th.bing.com/th/id/OIP.qYRHSbJ2RYurxQwUi8JnowHaJ4?w=115&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+        </div>
+        <div class="ten">
+            <p class="ten">Iphone 14</p>
+        </div>
+        <div class="gia">
+            <span class="giaGoc">50.000.000đ</span>
+            <span class="giaBan">45.000.000đ</span>
+        </div>
+        <input type="number" class="soLuong" value="1">
+        <p class="tongTien">45.000.000đ</p>
+        <div class="hanhDong">
+            <i class="fa-solid fa-trash"></i>
+        </div>
+    </div> -->
+</div>
+
+<body>
+    <!-- Buoc 1: Xay dung layout cho 1 item gio hang: html,css -->
+    <!-- Buoc 2: Viet ham chuyen doi mot doi tuong thanh HTML da xay dung o Buoc 1 -->
+    <!-- Buoc 3: Viet ham chuyen doi mot danh sach item gio hang => HTML -->
+    <!-- Buoc 4: Gan HTML danh sach item gio hang vao node trong HTML -->
+
+    <!-- Chuyen 1 doi tuong thanh HMTL -->
+    <!-- input: doi tuong gio hang -->
+    <!-- output: HTML hien thi item gio hang -->
+    <script src="giohang.js"></script>
+    <script>
+        hienThiDanhSachItemGioHang();
+
+        function chuyenDoiTuongItemGioHangSangHTML(itemGioHang) {
+            var html = ``;
+            html = '<div class="item_gio_hang">'+
+                '<div class="hinhAnh">'+
+                '<img src="https://th.bing.com/th/id/OIP.qYRHSbJ2RYurxQwUi8JnowHaJ4?w=115&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">'+
+                '</div>'+
+                '<div class="ten">'+
+                '<p class="ten">Iphone 14</p>'+
+                '</div>'+
+                '<div class="gia">'+
+                '<span class="giaGoc">50.000.000đ</span>'+
+                '<span class="giaBan">45.000.000đ</span>'+
+                '</div>'+
+                '<input type="number" class="soLuong" value="1">'+
+                '<p class="tongTien">45.000.000đ</p>'+
+                '<div class="hanhDong">'+
+                '<i class="fa-solid fa-trash"></i>'+
+                '</div>'+
+                '</div>';
+            return html;
+        }
+
+        // Mo to: Chuyen mot Danh sach thanh HTML
+        // input: danh sach Item gio hang
+        // output: HTML hien thi danh Item gio hang
+        function chuyenDanhSachItemGioHangSangHTML(danhSachItemGioHang) {
+            var htmlTong = ``;
+            for (var i = 0;i<danhSachItemGioHang.length;i++) {
+                htmlTong += chuyenDoiTuongItemGioHangSangHTML(danhSachItemGioHang[i]);
+            }
+            return htmlTong;
+        }
+
+        function hienThiDanhSachItemGioHang() {
+            // Buoc 1: Lay danh sach item gio hang duoi Local Storage len
+            var danhSachItemGioHang = layGioHangTuLocalStorage();
+            console.log(danhSachItemGioHang);
+            // Buoc 2: Chuyen danh sach item gio hang thanh HTML
+            var HTML = chuyenDanhSachItemGioHangSangHTML(danhSachItemGioHang);
+            console.log(HTML);
+            // Buoc 3: Truy cap Node gio hang de hien thi HTML danh sach Item gio hang len
+            var nodeGioHang = document.getElementById(`gio_hang`);
+            nodeGioHang.innerHTML = HTML;
+        }
+    </script>
+</body>
+</html>
