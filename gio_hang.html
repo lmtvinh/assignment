@@ -73,28 +73,31 @@
     </style>
 </head>
 
-<div class="gio_hang" id="gio_hang">
-    <!-- Danh sach item gio hang -->
-    <!-- <div class="item_gio_hang">
-        <div class="hinhAnh">
-            <img src="https://th.bing.com/th/id/OIP.qYRHSbJ2RYurxQwUi8JnowHaJ4?w=115&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
-        </div>
-        <div class="ten">
-            <p class="ten">Iphone 14</p>
-        </div>
-        <div class="gia">
-            <span class="giaGoc">50.000.000đ</span>
-            <span class="giaBan">45.000.000đ</span>
-        </div>
-        <input type="number" class="soLuong" value="1">
-        <p class="tongTien">45.000.000đ</p>
-        <div class="hanhDong">
-            <i class="fa-solid fa-trash"></i>
-        </div>
-    </div> -->
-</div>
+
 
 <body>
+
+    <div class="gio_hang" id="gio_hang">
+        <!-- Danh sach item gio hang -->
+        <!-- <div class="item_gio_hang">
+            <div class="hinhAnh">
+                <img src="https://th.bing.com/th/id/OIP.qYRHSbJ2RYurxQwUi8JnowHaJ4?w=115&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">
+            </div>
+            <div class="ten">
+                <p class="ten">Iphone 14</p>
+            </div>
+            <div class="gia">
+                <span class="giaGoc">50.000.000đ</span>
+                <span class="giaBan">45.000.000đ</span>
+            </div>
+            <input type="number" class="soLuong" value="1">
+            <p class="tongTien">45.000.000đ</p>
+            <div class="hanhDong">
+                <i class="fa-solid fa-trash"></i>
+            </div>
+        </div> -->
+    </div>
+
     <!-- Buoc 1: Xay dung layout cho 1 item gio hang: html,css -->
     <!-- Buoc 2: Viet ham chuyen doi mot doi tuong thanh HTML da xay dung o Buoc 1 -->
     <!-- Buoc 3: Viet ham chuyen doi mot danh sach item gio hang => HTML -->
@@ -134,7 +137,7 @@
         // output: HTML hien thi danh Item gio hang
         function chuyenDanhSachItemGioHangSangHTML(danhSachItemGioHang) {
             var htmlTong = ``;
-            for (var i = 0;i<danhSachItemGioHang.length;i++) {
+            for (var i = 0; i < danhSachItemGioHang.length; i++) {
                 htmlTong += chuyenDoiTuongItemGioHangSangHTML(danhSachItemGioHang[i]);
             }
             return htmlTong;

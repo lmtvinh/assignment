@@ -16,7 +16,7 @@ function TaoDoiTuongItemGioHang(idSanPham, soLuong) {
 function LayDanhSachItemGioHang() {
     var danhSachItemGioHang = new Array();
     // Buoc 1: Lay chuoi json luu tru trong Local Storage
-    var jsonDanhSachGioHang = localStorage.getItem(keyLocalStorageItemGioHang);
+    var jsonDanhSachGioHang = localStorage.getItem(`keyLocalStorageItemGioHang`);
     // Buoc 2: Chuyen tu json qua danh sach item gio hang
     if (jsonDanhSachGioHang != null) {
         danhSachItemGioHang = JSON.parse(jsonDanhSachGioHang);
@@ -34,40 +34,17 @@ function luuDanhSachItemGioHangVaoLocalStorage(danhSachItemGioHang) {
     localStorage.setItem(keyLocalStorageItemGioHang, jsonDanhSachItemGioHang);
 }
 
+
 // Lay gio hang tu Local Storage len
 // output: gio hang
 function layGioHangTuLocalStorage() {
     var gioHang = new Array();
-    // Truy cap vap Loacl Storage de lay gio hang
-    // Buoc 1: lay Json
-    var jsonGioHang = localStorage.getItem(`gioHang`);
-
-    // Buoc 2: chuyen Json thanh doi tuong gio hang
+    // Truy cap vao Local Storage de lay gio hang
+    // Buoc 1: lay JSON
+    var jsonGioHang = localStorage.getItem(`danhSachItemGioHang`);
+    // Buoc 2: chuyen JSON thanh doi tuong gio hang
     if (jsonGioHang != null) {
         gioHang = JSON.parse(jsonGioHang);
     }
     return gioHang;
 }
-
-
-// Yeu cau: luu tru gio hang xuong Local Storage
-// input: giohang
-// output
-function luuGioHangVaoLocalStorage(gioHang) {
-    // Buoc 1: Chuyen gio hang thanh Json
-    var jsonGioHang = JSON.stringify(gioHang);
-
-    // Buoc 2: Luu Json xuong Local Storage
-    localStorage.setItem(`gioHang`,jsonGioHang);
-}
-
-function themSanPhamVaoGioHang(idSanPham, gioHang) {
-    var gioHangSauKhiDuocThem = gioHang;
-    // Buoc 1: tao ra doi tuong Item gio hang
-    var itemGioHang = TaoDoiTuongItemGioHang(idSanPham, 1);
-    // Buoc 2: them vao gio hang Item moi
-    console.log(gioHang);
-    gioHangSauKhiDuocThem.push(itemGioHang);
-    return gioHangSauKhiDuocThem;
-}
-
