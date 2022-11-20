@@ -70,3 +70,4 @@ function themSanPhamVaoGioHang(idSanPham, gioHang) {
     gioHangSauKhiDuocThem.push(itemGioHang);
     return gioHangSauKhiDuocThem;
 }
+
