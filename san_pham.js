@@ -3,7 +3,7 @@
 // output: mot doi tuong
 function TaoDoiTuongSanPhan(hinhAnh, ten, giaGoc, phanTramGiamGia, khuVuc, id) {
     var sanPham = new Object();
- 
+
     // Buoc 1: gan cac thuoc tinh cho doi tuong
     sanPham.hinhAnh = hinhAnh;
     sanPham.ten = ten;
@@ -11,7 +11,7 @@ function TaoDoiTuongSanPhan(hinhAnh, ten, giaGoc, phanTramGiamGia, khuVuc, id) {
     sanPham.phanTramGiamGia = phanTramGiamGia;
     sanPham.khuVuc = khuVuc;
 
-    if(id != null) {
+    if (id != null) {
         sanPham.id = id;
     } else {
         sanPham.id = taoID();
@@ -19,7 +19,7 @@ function TaoDoiTuongSanPhan(hinhAnh, ten, giaGoc, phanTramGiamGia, khuVuc, id) {
     // Buoc 2: viet phuong thuc cho doi tuong
     sanPham.tinhGiaBan = function () {
         // logic xu ly cua phuong thuc
-        var giaBan = Number(this.giaGoc) *(1 - Number(this.phanTramGiamGia));
+        var giaBan = Number(this.giaGoc) * (1 - Number(this.phanTramGiamGia));
         return giaBan;
     }
     sanPham.toJson = function () {
@@ -46,9 +46,9 @@ function TaoDoiTuongSanPhan(hinhAnh, ten, giaGoc, phanTramGiamGia, khuVuc, id) {
         // Buoc 1 : chuyen thanh danh sach Doi Tuong
         var danhSachSanPham = JSON.parse(jsonDanhSachSanPham);
 
-        for (var i =0;i<danhSachSanPham.length;i++) {
+        for (var i = 0; i < danhSachSanPham.length; i++) {
             var sanPham = danhSachSanPham[i];
-            var sanPhamDayDu = TaoDoiTuongSanPhan(sanPham.hinhAnh,sanPham.ten,sanPham.giaGoc,sanPham.phanTramGiamGia,sanPham.khuVuc);
+            var sanPhamDayDu = TaoDoiTuongSanPhan(sanPham.hinhAnh, sanPham.ten, sanPham.giaGoc, sanPham.phanTramGiamGia, sanPham.khuVuc);
             danhSachSanPhamDayDu[i] = sanPhamDayDu;
         }
         return danhSachSanPhamDayDu;
@@ -82,13 +82,13 @@ function chuyenDoiTuongSanPhamThanhHTML(sanPham) {
     var html = ``;
     html += `<div class="item">`;
     html += `<div class="item_thumb">`;
-    html += `<img src="` + sanPham.hinhAnh +`" alt=""></div>`;
-    html += `<h2 class="item_title">`+ sanPham.ten + `</h2>`;
+    html += `<img src="` + sanPham.hinhAnh + `" alt=""></div>`;
+    html += `<h2 class="item_title">` + sanPham.ten + `</h2>`;
     html += `<div class="item_price">`;
-    html += `<span class="item_price_origin">`+ sanPham.giaGoc +`</span>`;
-    html += `<span class="item_price_sale">`+ sanPham.tinhGiaBan() + `</span>`;
+    html += `<span class="item_price_origin">` + sanPham.giaGoc + `</span>`;
+    html += `<span class="item_price_sale">` + sanPham.tinhGiaBan() + `</span>`;
     html += `</div>`;
-    html += `<button onclick="onClickDuaVaoGioHang(\``+ sanPham.id +`\`)" class="btn btn-primary">Add to cart</button>`;
+    html += `<button onclick="onClickDuaVaoGioHang(\`` + sanPham.id + `\`)" class="btn btn-primary">Add to cart</button>`;
     html += `</div>`;
     return html;
 }
@@ -96,14 +96,14 @@ function chuyenDoiTuongSanPhamThanhHTML(sanPham) {
 
 // Input: ID
 // Output: Doi tuong co ID = ID
-function truyXuatSanPhamTheoID(id){
+function truyXuatSanPhamTheoID(id) {
     // Buoc 1: lay len danh sach toan bo doi tuong
     var jsonDanhSachSanPham = localStorage.getItem('danhSachSanPham');
     var danhSachSanPham = JSON.parse(jsonDanhSachSanPham);
     // Buoc 2: duyet toan bo doi tuong kiem tra ID cua doi tuong co bang voi ID truyen vao k
-    for(var i = 0;i<danhSachSanPham.length;i++) {
+    for (var i = 0; i < danhSachSanPham.length; i++) {
         var sanPhamHienTai = danhSachSanPham[i];
-        if(sanPhamHienTai.id === id) {
+        if (sanPhamHienTai.id === id) {
             return sanPhamHienTai;
         }
     }
@@ -127,14 +127,16 @@ function laySanPhamTheoId(idSanPham) {
             console.log(sanPham);
         }
     }
+    console.log(danhSachSanPham);
     // Buoc 3: Chuyen doi tuong thanh doi tuong day du
     sanPham = TaoDoiTuongSanPhan(sanPham.hinhAnh, sanPham.hinhAnh, sanPham.giaGoc, sanPham.phanTramGiamGia, sanPham.khuVuc, sanPham.id);
+    console.log(sanPham);
     return sanPham;
 }
 
 
 // Mo ta: lay toan bo danh sach sp duoi Local Storage
-function layDanhSachSanPhamDuoiLocalStorage(){
+function layDanhSachSanPhamDuoiLocalStorage() {
     // Buoc 1: load json
     var jsonDanhSachSanPham = localStorage.getItem('danhSachSanPham');
     // Buoc 2: chuyen json thanh doi tuong
