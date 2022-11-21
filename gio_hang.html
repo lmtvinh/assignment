@@ -106,41 +106,50 @@
     <!-- Chuyen 1 doi tuong thanh HMTL -->
     <!-- input: doi tuong gio hang -->
     <!-- output: HTML hien thi item gio hang -->
+    <script src="hotro.js"></script>
+    <script src="san_pham.js"></script>
     <script src="giohang.js"></script>
+    
     <script>
         hienThiDanhSachItemGioHang();
-
-        function chuyenDoiTuongItemGioHangSangHTML(itemGioHang) {
-            var html = ``;
-            html = '<div class="item_gio_hang">'+
-                '<div class="hinhAnh">'+
-                '<img src="https://th.bing.com/th/id/OIP.qYRHSbJ2RYurxQwUi8JnowHaJ4?w=115&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="">'+
-                '</div>'+
-                '<div class="ten">'+
-                '<p class="ten">Iphone 14</p>'+
-                '</div>'+
-                '<div class="gia">'+
-                '<span class="giaGoc">50.000.000đ</span>'+
-                '<span class="giaBan">45.000.000đ</span>'+
-                '</div>'+
-                '<input type="number" class="soLuong" value="1">'+
-                '<p class="tongTien">45.000.000đ</p>'+
-                '<div class="hanhDong">'+
-                '<i class="fa-solid fa-trash"></i>'+
-                '</div>'+
-                '</div>';
-            return html;
-        }
 
         // Mo to: Chuyen mot Danh sach thanh HTML
         // input: danh sach Item gio hang
         // output: HTML hien thi danh Item gio hang
         function chuyenDanhSachItemGioHangSangHTML(danhSachItemGioHang) {
-            var htmlTong = ``;
+            var htmlTong = '';
             for (var i = 0; i < danhSachItemGioHang.length; i++) {
                 htmlTong += chuyenDoiTuongItemGioHangSangHTML(danhSachItemGioHang[i]);
             }
             return htmlTong;
+        }
+
+        function chuyenDoiTuongItemGioHangSangHTML(itemGioHang) {
+            // Buoc 1: Chuyen tu idSanPham => doi tuong san pham (hinh anh, ten, gia)
+            var sanPham = laySanPhamTheoId(itemGioHang.idSanPham);
+            console.log(sanPham);
+
+            var tongTien = itemGioHang.soLuong * sanPham.tinhGiaBan(); 
+            // Buoc 2: Khi co doi tuong, thay the nhung gia tri cua doi tuong thanh HTML
+            var html = '';
+            html = '<div class="item_gio_hang">'+
+                '<div class="hinhAnh">'+
+                '<img src="' + sanPham.hinhAnh + '" alt="">'+
+                '</div>'+
+                '<div class="ten">'+
+                '<p class="ten">'+ sanPham.ten +'</p>'+
+                '</div>'+
+                '<div class="gia">'+
+                '<span class="giaGoc">'+ sanPham.giaGoc +'</span>'+
+                '<span class="giaBan">'+ sanPham.tinhGiaBan()  +'</span>'+
+                '</div>'+
+                '<input type="number" class="soLuong" value="'+ itemGioHang.soLuong +'">'+
+                '<p class="tongTien">'+ tongTien +'</p>'+
+                '<div class="hanhDong">'+
+                '<i class="fa-solid fa-trash"></i>'+
+                '</div>'+
+                '</div>';
+            return html;
         }
 
         function hienThiDanhSachItemGioHang() {

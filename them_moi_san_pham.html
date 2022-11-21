@@ -68,13 +68,13 @@
     </div>
     <script>
       // Buoc 1: Lay danh sach san pham da co trong local storage
-      let danhSachSanPham = JSON.parse(localStorage.getItem(`danhSachSanPham`));
+      var danhSachSanPham = JSON.parse(localStorage.getItem(`danhSachSanPham`));
       if (danhSachSanPham === null) {
         danhSachSanPham = new Array();
       }
       console.log(danhSachSanPham);
 
-      let danhSachSanPham1 = new Array();
+      var danhSachSanPham1 = new Array();
       // Nhiem vu
       // 1. Lang nghe su kien onclick, khi nguoi dung click vao button tao san pham
       // 2. Lay toan bo du lieu nguoi dung dang nhap vao
@@ -82,28 +82,28 @@
 
       function onClickTaoSanPham() {
         // 1. Truy cap cac node de lay duoc du lieu
-        let nodeHinhAnh = document.getElementById("hinhAnh");
-        let hinhAnh = nodeHinhAnh.value;
+        var nodeHinhAnh = document.getElementById("hinhAnh");
+        var hinhAnh = nodeHinhAnh.value;
         nodeHinhAnh.value = ``;
 
-        let nodeTen = document.getElementById("ten");
-        let ten = nodeTen.value;
+        var nodeTen = document.getElementById("ten");
+        var ten = nodeTen.value;
         nodeTen.value = ``;
 
-        let nodeGiaGoc = document.getElementById("giaGoc");
-        let giaGoc = parseInt(nodeGiaGoc.value);
+        var nodeGiaGoc = document.getElementById("giaGoc");
+        var giaGoc = parseInt(nodeGiaGoc.value);
         nodeGiaGoc = "";
 
-        let nodePhanTramGiamGia = document.getElementById("phanTramGiamGia");
-        let phanTramGiamGIa = Number(nodePhanTramGiamGia.value);
+        var nodePhanTramGiamGia = document.getElementById("phanTramGiamGia");
+        var phanTramGiamGIa = Number(nodePhanTramGiamGia.value);
 
-        let nodeKhuVuc = document.getElementById("khuVuc");
-        let khuVuc = nodeKhuVuc.value;
+        var nodeKhuVuc = document.getElementById("khuVuc");
+        var khuVuc = nodeKhuVuc.value;
         nodeKhuVuc = "";
 
 
         // 2. Tao ra doi tuong tu cac du lieu nguoi dung nhap vao
-        let sanPham = TaoDoiTuongSanPhan(
+        var sanPham = TaoDoiTuongSanPhan(
           hinhAnh,
           ten,
           giaGoc,
@@ -117,7 +117,7 @@
         console.log(`Danh sach cac san pham la: `);
         console.log(danhSachSanPham1);
         // Luu tru danh sach san pham xuong local Storage
-        let jsonDanhSachSanPham1 = JSON.stringify(danhSachSanPham1);
+        var jsonDanhSachSanPham1 = JSON.stringify(danhSachSanPham1);
         localStorage.setItem(`danhSachSanPham`, jsonDanhSachSanPham1);
       }
     </script>

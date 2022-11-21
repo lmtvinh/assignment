@@ -110,3 +110,34 @@ function truyXuatSanPhamTheoID(id){
     // Buoc 3: neu co ton tai doi tuong giong ID thi lay ra doi tuong
 
 }
+
+// Mo ta: Tu id san pham lay len doi tuong san pham voi day du cac ham ben trong doi tuong
+// input: idSanPham
+//  output: doi tuong san pham
+function laySanPhamTheoId(idSanPham) {
+    var sanPham = new Object();
+    // Buoc 1: Load toan bo danh sach san pham duoi Local Storage len
+    var danhSachSanPham = layDanhSachSanPhamDuoiLocalStorage();
+    console.log(danhSachSanPham);
+    // Buoc 2: Tim ra doi tuong nao trong danh sach ma co id = idSanPham
+    for (var i = 0; i < danhSachSanPham.length; i++) {
+        var sanPhamHienTai = danhSachSanPham[i];
+        if (sanPhamHienTai.id == idSanPham) {
+            sanPham = sanPhamHienTai;
+            console.log(sanPham);
+        }
+    }
+    // Buoc 3: Chuyen doi tuong thanh doi tuong day du
+    sanPham = TaoDoiTuongSanPhan(sanPham.hinhAnh, sanPham.hinhAnh, sanPham.giaGoc, sanPham.phanTramGiamGia, sanPham.khuVuc, sanPham.id);
+    return sanPham;
+}
+
+
+// Mo ta: lay toan bo danh sach sp duoi Local Storage
+function layDanhSachSanPhamDuoiLocalStorage(){
+    // Buoc 1: load json
+    var jsonDanhSachSanPham = localStorage.getItem('danhSachSanPham');
+    // Buoc 2: chuyen json thanh doi tuong
+    let danhSachSanPham = JSON.parse(jsonDanhSachSanPham);
+    return danhSachSanPham;
+}
