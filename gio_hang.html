@@ -127,6 +127,7 @@
         function chuyenDoiTuongItemGioHangSangHTML(itemGioHang) {
             // Buoc 1: Chuyen tu idSanPham => doi tuong san pham (hinh anh, ten, gia)
             var sanPham = laySanPhamTheoId(itemGioHang.idSanPham);
+            console.log(itemGioHang.idSanPham);
             console.log(sanPham);
 
             var tongTien = itemGioHang.soLuong * sanPham.tinhGiaBan(); 

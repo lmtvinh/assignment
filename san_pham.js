@@ -124,13 +124,10 @@ function laySanPhamTheoId(idSanPham) {
         var sanPhamHienTai = danhSachSanPham[i];
         if (sanPhamHienTai.id == idSanPham) {
             sanPham = sanPhamHienTai;
-            console.log(sanPham);
         }
     } 
-    console.log(danhSachSanPham);
     // Buoc 3: Chuyen doi tuong thanh doi tuong day du
     sanPham = TaoDoiTuongSanPhan(sanPham.hinhAnh, sanPham.hinhAnh, sanPham.giaGoc, sanPham.phanTramGiamGia, sanPham.khuVuc, sanPham.id);
-    console.log(sanPham);
     return sanPham;
 }
 

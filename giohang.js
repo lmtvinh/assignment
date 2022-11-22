@@ -55,7 +55,7 @@ function layGioHangTuLocalStorage() {
     var danhSachItemGioHang = new Array();
     // Truy cap vao Local Storage de lay gio hang
     // Buoc 1: lay JSON
-    var jsonGioHang = localStorage.getItem(`danhSachItemGioHang`);
+    var jsonGioHang = localStorage.getItem('danhSachItemGioHang');
     // Buoc 2: chuyen JSON thanh doi tuong gio hang
     if (jsonGioHang != null) {
         danhSachItemGioHang = JSON.parse(jsonGioHang);
