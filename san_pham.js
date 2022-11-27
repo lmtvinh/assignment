@@ -34,7 +34,7 @@ function TaoDoiTuongSanPhan(hinhAnh, ten, giaGoc, phanTramGiamGia, khuVuc, id) {
         // Buoc 1: Chuyen JSON thanh doi tuong
         var doiTuong = JSON.parse(json);
         // BUoc 2: Chuyen doi tuong thanh doi tuong day du phuong thuc
-        var doiTuongDayDU = TaoDoiTuongSanPhan(doiTuong.hinhAnh, doiTuong.ten, doiTuong.giaGoc, doiTuong.phanTramGiamGia, doiTuong.khuVuc);
+        var doiTuongDayDU = TaoDoiTuongSanPhan(doiTuong.hinhAnh, doiTuong.ten, doiTuong.giaGoc, doiTuong.phanTramGiamGia, doiTuong.khuVuc, doiTuong.id);
         return doiTuongDayDu;
     }
 
@@ -48,7 +48,7 @@ function TaoDoiTuongSanPhan(hinhAnh, ten, giaGoc, phanTramGiamGia, khuVuc, id) {
 
         for (var i = 0; i < danhSachSanPham.length; i++) {
             var sanPham = danhSachSanPham[i];
-            var sanPhamDayDu = TaoDoiTuongSanPhan(sanPham.hinhAnh, sanPham.ten, sanPham.giaGoc, sanPham.phanTramGiamGia, sanPham.khuVuc);
+            var sanPhamDayDu = TaoDoiTuongSanPhan(sanPham.hinhAnh, sanPham.ten, sanPham.giaGoc, sanPham.phanTramGiamGia, sanPham.khuVuc, sanPham.id);
             danhSachSanPhamDayDu[i] = sanPhamDayDu;
         }
         return danhSachSanPhamDayDu;
@@ -118,7 +118,7 @@ function laySanPhamTheoId(idSanPham) {
     var sanPham = new Object();
     // Buoc 1: Load toan bo danh sach san pham duoi Local Storage len
     var danhSachSanPham = layDanhSachSanPhamDuoiLocalStorage();
-    console.log(danhSachSanPham);
+
     // Buoc 2: Tim ra doi tuong nao trong danh sach ma co id = idSanPham
     for (var i = 0; i < danhSachSanPham.length; i++) {
         var sanPhamHienTai = danhSachSanPham[i];

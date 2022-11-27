@@ -76,7 +76,6 @@
 
 
 <body>
-
     <div class="gio_hang" id="gio_hang">
         <!-- Danh sach item gio hang -->
         <!-- <div class="item_gio_hang">
@@ -127,8 +126,6 @@
         function chuyenDoiTuongItemGioHangSangHTML(itemGioHang) {
             // Buoc 1: Chuyen tu idSanPham => doi tuong san pham (hinh anh, ten, gia)
             var sanPham = laySanPhamTheoId(itemGioHang.idSanPham);
-            console.log(itemGioHang.idSanPham);
-            console.log(sanPham);
 
             var tongTien = itemGioHang.soLuong * sanPham.tinhGiaBan(); 
             // Buoc 2: Khi co doi tuong, thay the nhung gia tri cua doi tuong thanh HTML
@@ -156,7 +153,6 @@
         function hienThiDanhSachItemGioHang() {
             // Buoc 1: Lay danh sach item gio hang duoi Local Storage len
             var danhSachItemGioHang = layGioHangTuLocalStorage();
-            console.log(danhSachItemGioHang);
             // Buoc 2: Chuyen danh sach item gio hang thanh HTML
             var HTML = chuyenDanhSachItemGioHangSangHTML(danhSachItemGioHang);
             console.log(HTML);
